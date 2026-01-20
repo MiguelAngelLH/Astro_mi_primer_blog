@@ -1,0 +1,55 @@
+---
+import Navigation from '../components/Navigation.astro';
+import "../styles/global.css";
+const pageTitle = "Sobre mi";
+
+const identity = {
+  firstName: "Miguel Angel",
+  country: "Mexico",
+  occupation: "Escritor técnico",
+  hobbies: ["Programacion", "Desarrollo", "pasion por la tecnologia"],
+};
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Redacción de documentos"];
+
+const happy = true;
+const finished = true;
+const goal = 3;
+
+const skillColor = "crimson";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{pageTitle}</title>
+    <style define:vars={{skillColor}}>
+      h1 {
+        color: purple;
+        font-size: 4rem;
+      }
+      .skill {
+        color: var(--skillColor);
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <Navigation />
+    <h1>{pageTitle}</h1>
+    <h2>... ¡y mi nuevo sitio Astro!</h2>
+
+    <p>Estoy trabajando en el tutorial introductorio de Astro. Esta es la segunda página de mi sitio web, ¡y es la primera que he construido yo mismo!</p>
+
+    <p>Este sitio se irá actualizando a medida que vaya completando más partes del tutorial, ¡así que no dejes de visitarlo para ver cómo va mi viaje!</p>
+
+    <p>Mis habilidades son:</p>
+    <ul>
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
+    </ul>
+      <script>
+    import "../scripts/menu.js";
+  </script>
+  </body>
+</html>
