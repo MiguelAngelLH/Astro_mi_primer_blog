@@ -3,7 +3,13 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro'
 import BlogPost from '../components/BlogPost.astro';
 const pageTitle = "Mi blog de Astro aprendizaje";
-const allPosts = await getCollection('blog');
+const allPostsUnsorted = await getCollection('blog');
+// Ordenar por número en el id (post-1, post-2, ...)
+function postNumber(post) {
+  const m = String(post.id).match(/post-(\d+)/i);
+  return m ? Number(m[1]) : 0;
+}
+const allPosts = allPostsUnsorted.sort((a, b) => postNumber(a) - postNumber(b));
 
 
 
